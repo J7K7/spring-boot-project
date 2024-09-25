@@ -69,7 +69,7 @@ public class TopicController {
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @PutMapping("{/id}")
+    @PutMapping("/{id}")
     public ResponseEntity<?> updateTopic(@PathVariable Integer id, @ModelAttribute TopicRequestDto topicRequestDto){
         try {
             TopicResponseDto topicResponseDto = topicService.updateTopic(id, topicRequestDto);
@@ -83,7 +83,7 @@ public class TopicController {
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @DeleteMapping("{/id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteTopic(@PathVariable Integer id){
         try {
             topicService.deleteTopic(id);
@@ -97,13 +97,13 @@ public class TopicController {
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @DeleteMapping(("/doc{/id}"))
+    @DeleteMapping(("/doc/{id}"))
     public ResponseEntity<?> deleteTopicDocument(@PathVariable Integer id){
         try {
             topicService.deleteTopicDocument(id);
             return ResponseEntity.noContent().build();
         } catch (Exception e) {
-            Map<String, Object> map = new HashMap<>();
+            Map<String, Object> map = new HashMap<>(); 
             map.put("message", e.getMessage());
             map.put("status", false);
             return new ResponseEntity<>(map, HttpStatus.INTERNAL_SERVER_ERROR);
