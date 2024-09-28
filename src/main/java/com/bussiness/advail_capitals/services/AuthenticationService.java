@@ -62,11 +62,15 @@ public class AuthenticationService {
             if (input.getPassword() == null || input.getPassword().trim().isEmpty()) {
                 throw new IllegalArgumentException("Password must not be empty");
             }
+            if (input.getPhoneNumber() == null || input.getPhoneNumber().trim().isEmpty()) {
+                throw new IllegalArgumentException("Phone Number must not be empty");
+            }
             
             User user = new User()
                 .setFullName(input.getFullName())
                 .setEmail(input.getEmail())
                 .setPassword(passwordEncoder.encode(input.getPassword()))
+                .setPhoneNumber(input.getPhoneNumber())
                 .setRoles(Set.of(role));
 
             logger.info("Saving user: {}", user.getEmail());

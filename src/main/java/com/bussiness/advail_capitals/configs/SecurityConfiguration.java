@@ -29,7 +29,7 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authorizeRequests -> 
-                authorizeRequests.requestMatchers("/auth/**", "/images/**", "/api/inquiry/addInquiry")
+                authorizeRequests.requestMatchers("/auth/login", "/auth/adminSignup", "/images/**", "/api/inquiry/addInquiry")
                 .permitAll()
                 .anyRequest()
                 .authenticated());

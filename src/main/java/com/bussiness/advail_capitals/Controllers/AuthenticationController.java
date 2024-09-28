@@ -52,6 +52,7 @@ public class AuthenticationController {
         }
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/signup")
     public ResponseEntity<?> register(@RequestBody RegisterUserRequestDto registerUserDto) {
         try{

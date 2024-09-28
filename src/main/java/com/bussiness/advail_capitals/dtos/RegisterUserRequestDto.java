@@ -20,5 +20,8 @@ public class RegisterUserRequestDto {
     @NotBlank(message = "Full name is mandatory")
     private String fullName;
     
+    @NotBlank(message = "Phone Number is mandatory")
+    private String phoneNumber;
+
     private String userType;
 }
